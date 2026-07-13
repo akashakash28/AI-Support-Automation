@@ -66,6 +66,3 @@ For an in-depth breakdown of the component architecture, technology justificatio
 
 ## 🔒 Security
 All AI operations are executed locally. No sensitive corporate IT tickets or employee credentials ever leave your internal network, ensuring complete GDPR and enterprise data policy compliance.
-
----
-*Empowered by AI.*
