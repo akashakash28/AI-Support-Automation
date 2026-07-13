@@ -61,7 +61,25 @@ ollama run qwen2.5:1.5b
 ```
 *(You can change the model name in `AIService.java` based on your hardware capabilities).*
 
-## 📖 Architecture & Design Documentation
+## 🏗️ Development & System Architecture (How it Works)
+
+This project was built from the ground up to operate as a micro-service-like monolith, with clear separations of concern. Here is how the internal system connects:
+
+### 1. The Presentation Layer (Frontend)
+- Built with **Vite + React.js**.
+- **Connection**: All API calls are routed through a centralized `axios` instance (`frontend/src/api/axios.js`). This instance automatically intercepts requests and attaches the `Bearer JWT Token` from `localStorage` to the `Authorization` header.
+- **Routing**: Protected routes ensure that an unauthenticated user is immediately kicked back to the `/login` screen. Depending on the `Role` in the JWT payload, the user is presented with either the `EmployeeLayout` (AI Chat focus) or `AdminLayout` (Dashboard focus).
+
+### 2. The Business Logic Layer (Backend)
+- Built with **Spring Boot 3**.
+- **Connection (Inbound)**: The frontend connects to the backend on `http://localhost:8080/api/...`. Spring Security filters every request (`JwtAuthenticationFilter.java`) to validate cryptographic signatures before reaching the Controllers.
+- **Connection (Outbound to DB)**: Spring Data JPA connects to the **MySQL** database (`http://localhost:3306`) via HikariCP connection pooling to perform CRUD operations on Tickets, Users, and Comments.
+
+### 3. The AI Integration Layer (Ollama)
+- **Connection**: The backend uses Spring's non-blocking `WebClient` inside `AIService.java` to make HTTP POST requests to the local Ollama API (`http://localhost:11434/api/generate`).
+- **Data Flow**: When an employee types a message, the React frontend sends it to Spring Boot -> Spring Boot injects it into a highly-engineered system prompt -> Spring Boot sends it to Ollama -> Ollama processes the text and streams the response back -> Spring Boot returns the response to React -> React Markdown parses and renders the text beautifully in the Glassmorphism UI.
+
+## 📖 Extended Design Documentation
 For an in-depth breakdown of the component architecture, technology justifications, and fault-tolerance fallbacks, please review the included project documentation.
 
 ## 🔒 Security
