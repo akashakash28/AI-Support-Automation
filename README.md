@@ -1,4 +1,4 @@
-﻿# AI Support Automation Platform
+# AI Support Automation Platform
 
 An enterprise-grade, autonomous IT Helpdesk ticketing system powered by Local LLMs (Ollama/Qwen/Llama) designed to triage, prioritize, route, and resolve employee issues with minimal human intervention.
 
@@ -29,37 +29,37 @@ An enterprise-grade, autonomous IT Helpdesk ticketing system powered by Local LL
 
 ### 1. Database Setup
 Create a new MySQL database:
-\\\sql
+```sql
 CREATE DATABASE ai_support_db;
-\\\
-Configure your credentials in ackend/src/main/resources/application.properties:
-\\\properties
+```
+Configure your credentials in `backend/src/main/resources/application.properties`:
+```properties
 spring.datasource.url=jdbc:mysql://localhost:3306/ai_support_db
 spring.datasource.username=root
 spring.datasource.password=your_password
-\\\
+```
 
 ### 2. Backend Setup
 Navigate to the backend directory and run the Spring Boot application:
-\\\ash
+```bash
 cd backend
 ./mvnw clean spring-boot:run
-\\\
+```
 
 ### 3. Frontend Setup
 Navigate to the frontend directory, install dependencies, and start the Vite development server:
-\\\ash
+```bash
 cd frontend
 npm install
 npm run dev
-\\\
+```
 
 ### 4. AI Engine Setup
 Ensure Ollama is running in the background and pull the required model:
-\\\ash
+```bash
 ollama run qwen2.5:1.5b
-\\\
-*(You can change the model name in AIService.java based on your hardware capabilities).*
+```
+*(You can change the model name in `AIService.java` based on your hardware capabilities).*
 
 ## 📖 Architecture & Design Documentation
 For an in-depth breakdown of the component architecture, technology justifications, and fault-tolerance fallbacks, please review the included project documentation.
