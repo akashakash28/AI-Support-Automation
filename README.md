@@ -14,23 +14,17 @@
 
 ## 📸 Screenshots
 
-*(Note: Add your screenshots to a `screenshots` folder and uncomment these lines)*
-<!--
 ### Login & Dashboards
 ![Login Page](screenshots/login.png)
 ![Admin Dashboard](screenshots/admin-dashboard.png)
-![Employee Dashboard](screenshots/employee-dashboard.png)
 
 ### Core AI Features
 ![AI Chatbot](screenshots/ai-chat.png)
 ![AI Operations Dashboard](screenshots/ai-ops.png)
-![AI Copilot](screenshots/ai-copilot.png)
 
 ### Ticketing & Knowledge Base
 ![Create Ticket](screenshots/create-ticket.png)
-![Ticket Details](screenshots/ticket-details.png)
-![Knowledge Base](screenshots/knowledge-base.png)
--->
+![Ticket Management](screenshots/ticket-management.png)
 
 ---
 
